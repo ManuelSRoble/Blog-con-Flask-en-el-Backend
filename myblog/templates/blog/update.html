@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block header %}
+  <h2> {% block title %}Actualizar la Publicación{% endblock %} </h2>
+{% endblock %}
+
+{% block content %}
+<form method="POST">
+  <label for='title'>Título</label>
+  <!--obtener el contenido o valor que tiene el campo; recupero title y body-->
+  <input type="text" id='title' name='title' value="{{ post.title }}" required>
+  <label for='body'>Contenido</label>
+  <textarea id='body' name='body' cols='30' rows='10'>{{ post.body }}</textarea>
+  <input type="submit" value='Guardar'>
+</form>
+{% endblock  %}

@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% block header %}
+<h2> {% block title %}Publicaciones{% endblock %} </h2>
+{% if g.user %} <!--tiene que estar logeado para crear un post; entonces si hay un usuario, quiere decir que esta registrado-->
+  <a href="{{ url_for('blog.create') }}">Nueva Publicación</a>
+{% endif %}
+{% endblock %}
+<!--iterar y poner las Publicaciones-->
+{% block content %}
+
+{% for post in posts %}
+  <article>
+    <header>
+      <div>
+        <h1>{{ post.title }}</h1>
+        <div>
+          Publicado por {{ get_user(post.author).username }}
+          el {{ post.created.strftime('%Y-%m-%d') }}
+        </div>
+      </div>
+
+      <div> <!--enlaces para editar y eliminar publicaciones-->
+        {% if g.user.id == post.author %}<!--si esta logeado-->
+          <!--envio id por url-->
+          <a href="{{ url_for('blog.update', id = post.id) }}">Editar</a>
+          <a href="{{ url_for('blog.delete', id = post.id) }}">Eliminar</a>
+        {% endif %}
+      </div>
+    </header>
+    <div>
+      <p>
+        {{ post.body }}
+      </p>
+    </div>
+  </article>
+{% endfor %}
+
+{% endblock %}
