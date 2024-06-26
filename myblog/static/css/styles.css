@@ -1,0 +1,152 @@
+*{
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+:root{
+  --background: #377ba8;
+}
+body{
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 20px;
+}
+/*header styles*/
+.page-header{
+  background-color: #377ba8;
+}
+.nav-container{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 90%;
+  margin: 0 auto;
+  padding: 10px 0;
+}
+.nav-container a{
+  text-decoration: none;
+  color: #fff;
+}
+.nav-container nav {
+  display: flex;
+  align-items: center;
+}
+.nav-container nav a{
+  margin: 0 10px;
+}
+.nav-container nav span{
+  margin: 0 10px 0 0;
+  color: #ccc;
+  text-transform: capitalize;
+  font-weight: 600;
+}
+/*content*/
+.content{
+  max-width: 85%;
+  margin: 10px auto;
+}
+
+.content header{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #ccc;
+  padding: 10px 0;
+}
+/*mensaje flash*/
+.flash-message {
+  background-color: #0c950c;
+  color: white;
+  padding: 10px;
+}
+
+/*Index - publicaciones */
+article{
+  padding: 10px 0;
+}
+article header{
+  margin: 10px 0;
+  display: flex;
+  align-self: center;
+  justify-content: space-between;
+}
+article header h1{
+  font-size: 27px;
+}
+article header .about{
+  font-style: italic;
+  color: #444;
+  font-size: 18px;
+}
+
+/*Formulario*/
+form {
+  display: flex;
+  flex-direction: column;
+  margin: 10px 0;
+}
+
+form label, input, textarea{
+  font-weight: 500;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  margin: 10px 0;
+  font-size: 18px;
+  padding: 10px;
+}
+
+form input[type=submit]{
+  min-width: 200px;
+  align-self: start;
+}
+
+form input{
+  border: 2px solid #444;
+  border-radius: 5px;
+}
+
+/*login*/
+.login, .register{
+  max-width: 30%;
+  min-width: 200px;
+  margin: 0 auto;
+}
+.login input[type=submit],
+.register input[type=submit]{
+  margin: 10px 0;
+  min-width: 100%;
+  background-color: var(--background);
+  border: none;
+  border-radius: 5px;
+  color: #fff;
+}
+.login input[type=submit]:hover,
+.register input[type=submit]:hover{
+  background-color: #255a98;
+  cursor: pointer;
+}
+
+
+/*modo oscuro*/
+.toggle-mode-btn{
+  font-weight: 700;
+  font-size: 18px;
+  background-color: transparent;
+  border: 2px solid #255a98;
+  border-radius: 5px;
+  padding: 4px 10px;
+  margin-left: 15px;
+  color: white;
+}
+.toggle-mode-btn:hover{
+  cursor: pointer;
+  background-color: #255a98;
+  color: #eee;
+}
+.dark-mode {
+  background-color: #333;
+  color: #eee;
+}
+.dark-mode-input{
+  background-color: #333;
+  color: #eee;
+  border: 2px solid hsl(60, 100%, 50%);
+}

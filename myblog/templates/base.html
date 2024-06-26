@@ -3,33 +3,45 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="shortcut icon" href="{{ url_for('static', filename='image/blog.ico') }}" type="image/x-icon">
+  
   <title>{% block title %}{% endblock %}-MyBlog</title>
+  <link rel='stylesheet' href="{{ url_for('static', filename='css/styles.css') }}">
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 <body>
-  <header>
-    <div>
-      <a href="{{ url_for('blog.index') }}">
-        <h1>MyBlog</h1>
-      </a>
+  <header id='base-header' class='page-header'>
+    <div class='nav-container'>
+      <div>
+        <a href="{{ url_for('blog.index') }}">
+          <h1>MyBlog</h1>
+        </a>
+      </div>
+      <nav>
+        {% if g.user %}<!--si devuelve true, existe es que esta logeado-->
+          <img src="{{ url_for('static', filename='image/user.png') }}" style="background: #444; border-radius: 8px; padding: 2px;" alt="">
+          <span>{{ g.user.username }}</span>
+          <a href="{{ url_for('auth.logout') }}">Cerrar Sesión</a>
+        {% else %}
+          <a href="{{ url_for('auth.register') }}">Registrar Usuario</a>
+          <a href="{{ url_for('auth.login') }}">Iniciar Sesión</a>
+        {% endif %}
+        <button class='toggle-mode-btn' onclick="cambiarModo()">Modo</button>
+      </nav>
     </div>
-    <nav>
-      {% if g.user %}<!--si devuelve true, existe es que esta logeado-->
-        <span>{{ g.user.username }}</span>
-        <a href="{{ url_for('auth.logout') }}">Cerrar Sesión</a>
-      {% else %}
-        <a href="{{ url_for('auth.register') }}">Registrar Usuario</a>
-        <a href="{{ url_for('auth.login') }}">Iniciar Sesión</a>
-      {% endif %}
-    </nav>
   </header>
-  <section>
-    <header>{% block header %}{% endblock %}</header>
-    {% for message in get_flashed_messages() %}
-    <div>{{ message }}</div>
-    {% endfor %}
 
-    {% block content %}
-    {% endblock %}
+  <section>
+    <div class='content'>
+      <header>{% block header %}{% endblock %}</header>
+      {% for message in get_flashed_messages() %}
+      <div class='flash-message'>{{ message }}</div>
+      {% endfor %}
+  
+      {% block content %}
+      {% endblock %}
+    </div>
   </section>
 </body>
+<script src="{{ url_for('static', filename='js/scripts.js') }}"></script>
 </html>
