@@ -30,6 +30,8 @@ def register():
       error = 'Se requiere nombre de usuario'
     elif not password:
       error = 'Ser requiere contraseña'
+    elif not email:
+      error = 'Se debe ingresar un email'
       
     #consulto a la base de datos si ya existe
     user_name = User.query.filter_by(username = username).first()
