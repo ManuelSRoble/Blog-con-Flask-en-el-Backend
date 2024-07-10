@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f4;
+        color: #333333;
+        margin: 0;
+        padding: 0;
+      }
+      .eMail-container {
+        background-color: #ffffff;
+        margin: 20px auto;
+        padding: 20px;
+        border: 1px solid #dddddd;
+        border-radius: 5px;
+        max-width: 600px;
+      }
+      .eMail-header {
+        background-color: #08f;
+        color: #ffffff;
+        padding: 10px;
+        border-radius: 5px 5px 0 0;
+      }
+      .eMail-content {
+        padding: 20px;
+      }
+      .eMail-footer {
+        margin-top: 20px;
+        font-size: 0.9em;
+        color: #777;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="eMail-container">
+      <div class="eMail-header">
+        <h1>Contact Form Submission</h1>
+      </div>
+      <div class="eMail-content">
+        <p style="color: #333"><strong>Nombre:</strong> {{ name }}</p>
+        <p style="color: #333"><strong>EMail:</strong> {{ eMail }}</p>
+        <p style="color: #333"><strong>Mensaje:</strong></p>
+        <p style="color: #333">{{ message }}</p>
+        <a href="http://127.0.0.1:5000/verificar"
+          ><p style="color: rgb(6, 134, 6)">Hola</p></a
+        >
+      </div>
+      <div class="eMail-footer">
+        <p>Este es un mensaje automático. Por favor, no responda.</p>
+      </div>
+    </div>
+  </body>
+</html>

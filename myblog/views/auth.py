@@ -10,10 +10,11 @@ from myblog import db
 
 import functools
 
-from myblog.send_wellcome_email import *
+import functools
 
 #creo un blueprint llamado 'auth', registro una lista llamada 'auth' para acceder a listas y rutas
 auth = Blueprint('auth', __name__, url_prefix='/auth')#(lista, nombre de archivo de vista, como comienza la url en este caso comienza con /auth)
+
 
 #Registrar un usuario
 @auth.route('/register', methods=('GET','POST'))
@@ -21,7 +22,7 @@ def register():
   if request.method == 'POST':
     username = request.form.get('username')
     password = request.form.get('password')
-    email = request.form.get('email')
+    email = request.form['email']
     
     user = User(username, generate_password_hash(password), email)#crear un objeto; crear la tabla, (username, contrasena encriptada)
     #verificar si hubo un error
@@ -38,14 +39,10 @@ def register():
     if user_name == None: #si no existe lo agrego
       db.session.add(user)
       db.session.commit()
-      #envio mail
-      send_email(email)
-      
-      
+
       return redirect(url_for('auth.login'))
     else: 
       error = f"El usuario {username} ya esta registrado"
-      
     flash(error)
     
   return render_template("auth/register.html")

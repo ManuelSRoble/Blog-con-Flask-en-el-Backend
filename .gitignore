@@ -6,6 +6,6 @@ __pycache__/
 
 .pytest_cache/
 
-mail/
+config_mail.py
 
-config_para_email.py
+send_mail.py

@@ -1,0 +1,32 @@
+/* .imagenfondo {
+  background-image: url("static/css/imagenfondo.jpg");
+}
+img {
+  position: absolute;
+  z-index: -1;
+  max-width: 98.5vw;
+  opacity: 0.9;
+  size: cover;
+  overflow: hidden;
+  margin: 0;
+} */
+body {
+  position: relative;
+}
+.image-container {
+  width: 100%;
+  height: 590px;
+  overflow: hidden;
+  position: absolute;
+  z-index: -1;
+}
+.image-container img {
+  width: 100%;
+  height: auto;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+.dark-mode-img {
+  display: none;
+}
